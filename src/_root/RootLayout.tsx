@@ -1,7 +1,5 @@
-import React from "react";
-
 function RootLayout() {
-  return <div>RootLayout</div>;
+  return <div>HomePage</div>;
 }
 
 export default RootLayout;
