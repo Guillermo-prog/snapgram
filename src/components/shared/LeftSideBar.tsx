@@ -4,7 +4,7 @@ import { useSignOutAccountMutation } from "@/lib/react-query/queriesAndMutations
 import { INavLink } from "@/types";
 import { useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 
 const LeftSideBar = () => {
   const { mutateAsync: signOut, isSuccess } = useSignOutAccountMutation();
