@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import {
+  createPost,
   createUserAccount,
   signInAccount,
   signOutAccount,
@@ -23,4 +24,8 @@ export const useSignOutAccountMutation = () => {
   return useMutation({
     mutationFn: signOutAccount,
   });
+};
+
+export const useCreatePostMutation = () => {
+  return useMutation({ mutationFn: createPost });
 };
