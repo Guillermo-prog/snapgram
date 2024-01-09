@@ -5,7 +5,7 @@ import {
   signInAccount,
   signOutAccount,
 } from "../appwrite/api";
-import { INewUser } from "@/types";
+import { INewPost, INewUser } from "@/types";
 
 export const useCreateUserAccountMutation = () => {
   return useMutation({
@@ -27,5 +27,5 @@ export const useSignOutAccountMutation = () => {
 };
 
 export const useCreatePostMutation = () => {
-  return useMutation({ mutationFn: createPost });
+  return useMutation({ mutationFn: (post: INewPost) => createPost(post) });
 };
