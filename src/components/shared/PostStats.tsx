@@ -10,12 +10,12 @@ import { Loader } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type PostStatsProps = {
-  post: Models.Document;
+  post?: Models.Document;
   userId: string;
 };
 
-const PosStats = ({ post, userId }: PostStatsProps) => {
-  const likesList = post.likes.map((user: Models.Document) => user.$id);
+const PostStats = ({ post, userId }: PostStatsProps) => {
+  const likesList = post?.likes.map((user: Models.Document) => user.$id);
   const [likes, setLikes] = useState(likesList);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -29,7 +29,7 @@ const PosStats = ({ post, userId }: PostStatsProps) => {
   const { data: currentUser } = useGetCurrentUserQuery();
 
   const savePostRecord = currentUser?.save.find(
-    (record: Models.Document) => record.post.$id === post.$id
+    (record: Models.Document) => record.post.$id === post?.$id
   );
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const PosStats = ({ post, userId }: PostStatsProps) => {
     }
 
     setLikes(newLikes);
-    likePost({ postId: post.$id, likesArray: newLikes });
+    likePost({ postId: post?.$id || "", likesArray: newLikes });
   };
 
   const handleSavePost = (e: React.MouseEvent) => {
@@ -56,7 +56,7 @@ const PosStats = ({ post, userId }: PostStatsProps) => {
       setIsSaved(false);
       deleteSavedPost(savePostRecord.$id);
     } else {
-      savePost({ postId: post.$id, userId });
+      savePost({ postId: post?.$id || "", userId });
       setIsSaved(true);
     }
   };
@@ -67,8 +67,8 @@ const PosStats = ({ post, userId }: PostStatsProps) => {
         <img
           src={
             checkIsLiked(likes, userId)
-              ? "assets/icons/liked.svg"
-              : "assets/icons/like.svg"
+              ? "/assets/icons/liked.svg"
+              : "/assets/icons/like.svg"
           }
           alt="like"
           width={20}
@@ -84,7 +84,7 @@ const PosStats = ({ post, userId }: PostStatsProps) => {
           <Loader />
         ) : (
           <img
-            src={isSaved ? "assets/icons/saved.svg" : "assets/icons/save.svg"}
+            src={isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"}
             alt="save"
             width={20}
             height={20}
@@ -97,4 +97,4 @@ const PosStats = ({ post, userId }: PostStatsProps) => {
   );
 };
 
-export default PosStats;
+export default PostStats;
