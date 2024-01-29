@@ -18,7 +18,7 @@ const PostDetails = () => {
         <Loader />
       ) : (
         <div className="post_details-card">
-          <img src={post?.imageUrl} alt="post" className="post_details-img" />
+          <img src={post?.imageUrl} className="post_details-img" alt="post" />
 
           <div className="post_details-info">
             <div className="flex-between w-full">
@@ -65,7 +65,7 @@ const PostDetails = () => {
                 <Button
                   onClick={handleDeletePost}
                   variant="ghost"
-                  className={`ghost_details-delete_btn ${
+                  className={`ghost_details-delete_btn pr-0 ${
                     user.id !== post?.creator.$id && "hidden"
                   }`}
                 >
