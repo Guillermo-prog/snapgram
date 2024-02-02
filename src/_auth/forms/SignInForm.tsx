@@ -101,7 +101,7 @@ const SignInForm = () => {
                 Loading...
               </div>
             ) : (
-              "Sign up"
+              "Log in"
             )}
           </Button>
           <p className="text-small-regular text-light-2 text-center mt-2">
