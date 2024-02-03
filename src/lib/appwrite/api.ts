@@ -367,3 +367,16 @@ export async function searchPosts(searchTerm: string) {
     console.log(error);
   }
 }
+
+export async function getUserByid(userId: string) {
+  try {
+    const user = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersColletionId,
+      userId
+    );
+    return user;
+  } catch (error) {
+    console.log(error);
+  }
+}
